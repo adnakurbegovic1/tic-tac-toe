@@ -32,3 +32,29 @@ function move(cell) {
     }
   }
 }
+
+function checkWinner() {
+  // Provjera horizontalnih linija
+  for (let i = 0; i < 9; i += 3) {
+    if (gameBoard[i] && gameBoard[i] === gameBoard[i + 1] && gameBoard[i] === gameBoard[i + 2]) {
+      return true;
+    }
+  }
+  
+  // Provjera vertikalnih linija
+  for (let i = 0; i < 3; i++) {
+    if (gameBoard[i] && gameBoard[i] === gameBoard[i + 3] && gameBoard[i] === gameBoard[i + 6]) {
+      return true;
+    }
+  }
+  
+  // Provjera dijagonalnih linija
+  if (gameBoard[0] && gameBoard[0] === gameBoard[4] && gameBoard[0] === gameBoard[8]) {
+    return true;
+  }
+  if (gameBoard[2] && gameBoard[2] === gameBoard[4] && gameBoard[2] === gameBoard[6]) {
+    return true;
+  }
+  
+  return false;
+}
