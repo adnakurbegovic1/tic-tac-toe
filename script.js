@@ -66,3 +66,18 @@ function resetGame() {
   document.querySelectorAll(".cell").forEach(cell => cell.textContent = "");
   document.getElementById("winner").textContent = "";
 }
+
+  
+function undo() {
+  if (moveHistory.length > 0 && !checkWinner()) {
+    const lastMoveIndex = moveHistory.pop();
+    gameBoard[lastMoveIndex] = ""; // Poništavamo potez
+    const cells = document.querySelectorAll(".cell");
+    cells[lastMoveIndex].textContent = ""; // Brišemo znak iz polja
+    if (currentPlayer === "X") {
+        currentPlayer = "O";
+      } else {
+        currentPlayer = "X";
+      } // Promijenimo trenutnog igrača
+  }
+}
