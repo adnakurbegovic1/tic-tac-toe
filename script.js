@@ -92,3 +92,25 @@ function undo() {
       } // Promijenimo trenutnog igrača
   }
 }
+
+function computerMove() {
+  const emptyCells = gameBoard.reduce((acc, cell, index) => {
+    if (cell === "") {
+      acc.push(index);
+    }
+    return acc;
+  }, []);
+
+  if (emptyCells.length > 0) {
+    const randomIndex = Math.floor(Math.random() * emptyCells.length);
+    const chosenCell = emptyCells[randomIndex];
+    gameBoard[chosenCell] = "O";
+    moveHistory.push(chosenCell);
+    const cells = document.querySelectorAll(".cell");
+    cells[chosenCell].textContent = "O";
+    if (checkWinner()) {
+      document.getElementById("winner").textContent = "Player O wins!";
+    }
+    currentPlayer = "X";
+  }
+}
