@@ -58,3 +58,11 @@ function checkWinner() {
   
   return false;
 }
+
+function resetGame() {
+  currentPlayer = "X";
+  gameBoard = ["", "", "", "", "", "", "", "", ""];
+  moveHistory = [];
+  document.querySelectorAll(".cell").forEach(cell => cell.textContent = "");
+  document.getElementById("winner").textContent = "";
+}
