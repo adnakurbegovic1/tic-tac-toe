@@ -3,6 +3,17 @@ let gameBoard = ["", "", "", "", "", "", "", "", ""];
 let moveHistory = [];
 let mode = "2-player"; // Default mode is 2-player
 
+document.addEventListener("DOMContentLoaded", function () {
+  const modeRadios = document.querySelectorAll('input[name="mode"]');
+  modeRadios.forEach(radio => {
+    radio.addEventListener("change", () => {
+      mode = document.querySelector('input[name="mode"]:checked').value;
+      resetGame();
+    });
+  });
+});
+  
+
 function move(cell) {
   const cells = document.querySelectorAll('.cell');
   let index = -1;
